@@ -4,6 +4,7 @@ import session from 'express-session'
 import dotenv from 'dotenv'
 import passport from './auth.js'
 import rolesRouter from './routes/roles.js'
+import topicsRouter from './routes/topics.js'
 
 dotenv.config()
 
@@ -62,6 +63,7 @@ app.post('/api/auth/logout', (req, res) => {
 
 // API routes
 app.use('/api/roles', requireAuth, rolesRouter)
+app.use('/api/topics', requireAuth, topicsRouter)
 
 // Export app for adding routes in other files
 export { app }

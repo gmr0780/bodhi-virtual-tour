@@ -1,0 +1,79 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String    @id @default(uuid())
+  githubId       Int       @unique
+  githubUsername String
+  avatarUrl      String?
+  createdAt      DateTime  @default(now())
+  publishes      Publish[]
+}
+
+model Role {
+  id                String   @id @default(uuid())
+  name              String
+  description       String
+  icon              String
+  videoUrl          String   @default("")
+  recommendedTopics String[] @default([])
+  order             Int      @default(0)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model Topic {
+  id          String   @id @default(uuid())
+  name        String
+  description String
+  icon        String
+  order       Int      @default(0)
+  screens     Screen[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Screen {
+  id        String    @id @default(uuid())
+  topicId   String
+  topic     Topic     @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  title     String
+  imagePath String    @default("")
+  order     Int       @default(0)
+  hotspots  Hotspot[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Hotspot {
+  id          String   @id @default(uuid())
+  screenId    String
+  screen      Screen   @relation(fields: [screenId], references: [id], onDelete: Cascade)
+  x           Float
+  y           Float
+  title       String
+  description String
+  aiPowered   Boolean  @default(false)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Setting {
+  key   String @id
+  value Json
+}
+
+model Publish {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  commitSha   String
+  publishedAt DateTime @default(now())
+}

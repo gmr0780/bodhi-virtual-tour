@@ -1,6 +1,8 @@
 import express from 'express'
 import cors from 'cors'
+import session from 'express-session'
 import dotenv from 'dotenv'
+import passport from './auth.js'
 
 dotenv.config()
 
@@ -12,11 +14,53 @@ app.use(cors({
   credentials: true
 }))
 app.use(express.json())
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'dev-secret-change-in-production',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: process.env.NODE_ENV === 'production',
+    maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
+  }
+}))
+app.use(passport.initialize())
+app.use(passport.session())
+
+// Auth middleware
+export const requireAuth = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    return next()
+  }
+  res.status(401).json({ error: 'Unauthorized' })
+}
 
 // Health check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() })
 })
+
+// Auth routes
+app.get('/api/auth/github', passport.authenticate('github', { scope: ['user:email'] }))
+
+app.get('/api/auth/github/callback',
+  passport.authenticate('github', { failureRedirect: '/login?error=unauthorized' }),
+  (req, res) => {
+    res.redirect(process.env.CLIENT_URL || 'http://localhost:5173')
+  }
+)
+
+app.get('/api/auth/me', requireAuth, (req, res) => {
+  res.json(req.user)
+})
+
+app.post('/api/auth/logout', (req, res) => {
+  req.logout(() => {
+    res.json({ success: true })
+  })
+})
+
+// Export app for adding routes in other files
+export { app }
 
 app.listen(PORT, () => {
   console.log(`CMS Server running on http://localhost:${PORT}`)

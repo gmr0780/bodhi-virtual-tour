@@ -1,0 +1,251 @@
+{
+  "roles": [
+    {
+      "id": "gm",
+      "name": "Hotel General Manager",
+      "description": "See how Bodhi improves guest satisfaction and reduces costs",
+      "icon": "building",
+      "videoUrl": "",
+      "recommendedTopics": ["energy", "guest", "operations", "hardware"]
+    },
+    {
+      "id": "engineering",
+      "name": "Director of Engineering",
+      "description": "See how Bodhi streamlines maintenance and building operations",
+      "icon": "wrench",
+      "videoUrl": "",
+      "recommendedTopics": ["operations", "hardware", "energy", "guest"]
+    },
+    {
+      "id": "it",
+      "name": "Director of IT",
+      "description": "See how Bodhi integrates with your existing systems",
+      "icon": "server",
+      "videoUrl": "",
+      "recommendedTopics": ["hardware", "operations", "energy", "guest"]
+    }
+  ],
+  "topics": [
+    {
+      "id": "energy",
+      "name": "Energy & Cost Savings",
+      "description": "Reduce energy costs by up to 45% with intelligent automation",
+      "icon": "zap",
+      "screens": [
+        {
+          "id": "energy-dashboard",
+          "title": "Energy Dashboard",
+          "image": "/screenshots/energy-dashboard.png",
+          "hotspots": [
+            {
+              "id": "realtime-usage",
+              "x": 25,
+              "y": 20,
+              "title": "Real-time Energy Usage",
+              "description": "Monitor energy consumption across all properties in real-time. Bodhi AI identifies usage patterns and anomalies automatically.",
+              "aiPowered": true
+            },
+            {
+              "id": "savings-tracker",
+              "x": 70,
+              "y": 35,
+              "title": "Savings Tracker",
+              "description": "Track your actual savings compared to baseline. See ROI metrics and projected annual savings.",
+              "aiPowered": false
+            },
+            {
+              "id": "occupancy-automation",
+              "x": 45,
+              "y": 60,
+              "title": "Occupancy-Based Automation",
+              "description": "Automatically adjust climate and lighting based on room occupancy. Bodhi AI learns guest patterns to optimize comfort and efficiency.",
+              "aiPowered": true
+            }
+          ]
+        },
+        {
+          "id": "climate-controls",
+          "title": "Climate Controls",
+          "image": "/screenshots/climate-controls.png",
+          "hotspots": [
+            {
+              "id": "temp-scheduling",
+              "x": 30,
+              "y": 25,
+              "title": "Smart Temperature Scheduling",
+              "description": "Set temperature schedules that automatically adjust based on check-in/check-out times and occupancy.",
+              "aiPowered": true
+            },
+            {
+              "id": "zone-control",
+              "x": 65,
+              "y": 50,
+              "title": "Zone Control",
+              "description": "Manage temperature zones across your property from a single view. Group rooms by floor, building, or custom zones.",
+              "aiPowered": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "guest",
+      "name": "Guest Experience",
+      "description": "Delight guests with seamless digital experiences",
+      "icon": "smartphone",
+      "screens": [
+        {
+          "id": "guest-app",
+          "title": "Guest Mobile App",
+          "image": "/screenshots/guest-app.png",
+          "hotspots": [
+            {
+              "id": "mobile-key",
+              "x": 50,
+              "y": 30,
+              "title": "Mobile Key Access",
+              "description": "Guests unlock their room with their smartphone. No physical keys to manage or replace.",
+              "aiPowered": false
+            },
+            {
+              "id": "room-controls",
+              "x": 50,
+              "y": 55,
+              "title": "In-Room Controls",
+              "description": "Guests control lighting, temperature, and shades from their phone. Preferences sync automatically for return visits.",
+              "aiPowered": true
+            },
+            {
+              "id": "service-requests",
+              "x": 50,
+              "y": 80,
+              "title": "Service Requests",
+              "description": "One-tap requests for housekeeping, maintenance, or amenities. Requests route automatically to the right team.",
+              "aiPowered": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "operations",
+      "name": "Property Operations",
+      "description": "Proactive maintenance and centralized control",
+      "icon": "layout",
+      "screens": [
+        {
+          "id": "operations-dashboard",
+          "title": "Operations Dashboard",
+          "image": "/screenshots/operations-dashboard.png",
+          "hotspots": [
+            {
+              "id": "multi-property",
+              "x": 20,
+              "y": 25,
+              "title": "Multi-Property View",
+              "description": "Manage all your properties from one dashboard. Switch between properties or view portfolio-wide metrics.",
+              "aiPowered": false
+            },
+            {
+              "id": "alerts",
+              "x": 75,
+              "y": 30,
+              "title": "Proactive Alerts",
+              "description": "Bodhi AI detects potential issues before they become problems. Get alerts for leaks, temperature anomalies, and equipment issues.",
+              "aiPowered": true
+            },
+            {
+              "id": "ticket-management",
+              "x": 50,
+              "y": 65,
+              "title": "Ticket Management",
+              "description": "Maintenance tickets auto-generate from alerts. Track status, assign staff, and monitor resolution times.",
+              "aiPowered": true
+            }
+          ]
+        },
+        {
+          "id": "maintenance-alerts",
+          "title": "Maintenance Alerts",
+          "image": "/screenshots/maintenance-alerts.png",
+          "hotspots": [
+            {
+              "id": "leak-detection",
+              "x": 35,
+              "y": 40,
+              "title": "Leak & Flood Detection",
+              "description": "Sensors detect water issues immediately. Automatic alerts prevent costly damage.",
+              "aiPowered": false
+            },
+            {
+              "id": "predictive",
+              "x": 65,
+              "y": 40,
+              "title": "Predictive Maintenance",
+              "description": "Bodhi AI analyzes equipment patterns to predict failures before they happen. Schedule maintenance proactively.",
+              "aiPowered": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hardware",
+      "name": "Hardware & Integrations",
+      "description": "Enterprise-grade devices and seamless integrations",
+      "icon": "cpu",
+      "screens": [
+        {
+          "id": "device-management",
+          "title": "Device Management",
+          "image": "/screenshots/device-management.png",
+          "hotspots": [
+            {
+              "id": "device-list",
+              "x": 30,
+              "y": 35,
+              "title": "Device Inventory",
+              "description": "View and manage all connected devices. Monitor battery levels, connectivity status, and firmware versions.",
+              "aiPowered": false
+            },
+            {
+              "id": "remote-config",
+              "x": 70,
+              "y": 35,
+              "title": "Remote Configuration",
+              "description": "Update device settings remotely. Push firmware updates across your entire portfolio at once.",
+              "aiPowered": false
+            }
+          ]
+        },
+        {
+          "id": "integrations",
+          "title": "Integrations",
+          "image": "/screenshots/integrations.png",
+          "hotspots": [
+            {
+              "id": "pms-integration",
+              "x": 40,
+              "y": 30,
+              "title": "PMS Integration",
+              "description": "Connects with Opera, Mews, and other property management systems. Guest data syncs automatically.",
+              "aiPowered": false
+            },
+            {
+              "id": "api-access",
+              "x": 60,
+              "y": 60,
+              "title": "API Access",
+              "description": "Full REST API for custom integrations. Connect Bodhi to your existing tech stack.",
+              "aiPowered": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "cta": {
+    "text": "Book a Demo",
+    "url": "https://www.gobodhi.com/contact"
+  }
+}

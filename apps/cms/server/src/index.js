@@ -6,6 +6,7 @@ import passport from './auth.js'
 import rolesRouter from './routes/roles.js'
 import topicsRouter from './routes/topics.js'
 import screensRouter from './routes/screens.js'
+import hotspotsRouter from './routes/hotspots.js'
 
 dotenv.config()
 
@@ -66,6 +67,7 @@ app.post('/api/auth/logout', (req, res) => {
 app.use('/api/roles', requireAuth, rolesRouter)
 app.use('/api/topics', requireAuth, topicsRouter)
 app.use('/api/screens', requireAuth, screensRouter)
+app.use('/api/hotspots', requireAuth, hotspotsRouter)
 
 // Export app for adding routes in other files
 export { app }

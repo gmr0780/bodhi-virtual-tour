@@ -68,7 +68,10 @@ export const api = {
       body: formData
     })
 
-    if (!res.ok) throw new Error('Upload failed')
+    if (!res.ok) {
+      const error = await res.json().catch(() => ({ error: 'Upload failed' }))
+      throw new Error(error.error || 'Upload failed')
+    }
     return res.json()
   }
 }

@@ -8,13 +8,21 @@ const upload = multer({ storage: multer.memoryStorage() })
 
 // Upload image to GitHub
 router.post('/screenshot', upload.single('image'), async (req, res) => {
+  console.log('Upload request received:', {
+    hasFile: !!req.file,
+    filename: req.body?.filename,
+    fileSize: req.file?.size
+  })
+
   try {
     if (!req.file) {
+      console.log('No file in request')
       return res.status(400).json({ error: 'No file uploaded' })
     }
 
     const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN })
     const [owner, repo] = process.env.GITHUB_REPO.split('/')
+    console.log('Uploading to GitHub:', { owner, repo })
 
     // Generate filename
     const ext = path.extname(req.file.originalname) || '.png'
@@ -49,11 +57,14 @@ router.post('/screenshot', upload.single('image'), async (req, res) => {
     })
 
     // Return raw GitHub URL - immediately available after upload
+    const imagePath = `https://raw.githubusercontent.com/${owner}/${repo}/main/public/screenshots/${filename}`
+    console.log('Upload successful:', imagePath)
     res.json({
       success: true,
-      path: `https://raw.githubusercontent.com/${owner}/${repo}/main/public/screenshots/${filename}`
+      path: imagePath
     })
   } catch (err) {
+    console.error('Upload error:', err.message)
     res.status(500).json({ error: err.message })
   }
 })

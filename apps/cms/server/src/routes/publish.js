@@ -48,7 +48,7 @@ async function generateTourData() {
         }))
       }))
     })),
-    cta: settings?.value || { text: 'Book a Demo', url: 'https://www.gobodhi.com/contact' }
+    cta: settings?.value || { text: 'Book a Demo', url: 'https://meetings.hubspot.com/greg-michelier/website-booking-a-meeting?uuid=c942b5d3-92ea-40a2-b382-7d9556ac33ff' }
   }
 }
 

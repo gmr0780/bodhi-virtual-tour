@@ -20,7 +20,7 @@ export default function Settings() {
     try {
       const data = await api.getSettings()
       setSettings({
-        cta: data.cta || { text: 'Book a Demo', url: 'https://www.gobodhi.com/contact' },
+        cta: data.cta || { text: 'Book a Demo', url: 'https://meetings.hubspot.com/greg-michelier/website-booking-a-meeting?uuid=c942b5d3-92ea-40a2-b382-7d9556ac33ff' },
         allowedUsers: data.allowedUsers || []
       })
     } catch (err) {
@@ -122,7 +122,7 @@ export default function Settings() {
                 cta: { ...settings.cta, url: e.target.value }
               })}
               className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-bodhi-blue focus:border-transparent"
-              placeholder="https://www.gobodhi.com/contact"
+              placeholder="https://meetings.hubspot.com/greg-michelier/website-booking-a-meeting"
             />
           </div>
           <button

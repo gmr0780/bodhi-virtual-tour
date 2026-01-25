@@ -31,7 +31,7 @@ export default function Header({ completedTopics = [] }) {
             )}
 
             <a
-              href={tourData?.cta?.url || 'https://www.gobodhi.com/contact'}
+              href={tourData?.cta?.url || 'https://meetings.hubspot.com/greg-michelier/website-booking-a-meeting?uuid=c942b5d3-92ea-40a2-b382-7d9556ac33ff'}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-gradient-to-r from-bodhi-blue to-bodhi-blue-light text-white px-5 py-2 rounded-lg font-medium hover:opacity-90 transition-opacity shadow-md"

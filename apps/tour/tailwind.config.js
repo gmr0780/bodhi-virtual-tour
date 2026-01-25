@@ -8,10 +8,12 @@ export default {
     extend: {
       colors: {
         bodhi: {
-          blue: '#0066CC',
+          blue: '#4d65ff',
+          'blue-light': '#69adff',
+          'blue-pale': '#AFCFF5',
           dark: '#1a1a2e',
           light: '#f8f9fa',
-          accent: '#00d4aa',
+          accent: '#4d65ff',
         }
       }
     },

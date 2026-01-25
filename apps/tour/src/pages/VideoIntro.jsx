@@ -1,13 +1,24 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import Layout from '../components/Layout'
 import VideoPlayer from '../components/VideoPlayer'
-import tourData from '../data/tourData.json'
+import { useTourData } from '../hooks/useTourData'
 
 export default function VideoIntro() {
   const { roleId } = useParams()
   const navigate = useNavigate()
+  const { tourData, loading } = useTourData()
 
-  const role = tourData.roles.find(r => r.id === roleId)
+  const role = tourData?.roles?.find(r => r.id === roleId)
+
+  if (loading) {
+    return (
+      <Layout>
+        <div className="flex items-center justify-center min-h-[60vh]">
+          <div className="animate-spin w-8 h-8 border-4 border-bodhi-blue border-t-transparent rounded-full" />
+        </div>
+      </Layout>
+    )
+  }
 
   if (!role) {
     navigate('/')

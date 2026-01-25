@@ -4,18 +4,19 @@ import Layout from '../components/Layout'
 import ScreenshotView from '../components/ScreenshotView'
 import ScreenThumbnails from '../components/ScreenThumbnails'
 import { ChevronLeftIcon, ChevronRightIcon, getIcon } from '../components/icons'
-import tourData from '../data/tourData.json'
+import { useTourData } from '../hooks/useTourData'
 
 export default function Explorer() {
   const { roleId, topicId } = useParams()
   const navigate = useNavigate()
+  const { tourData, loading } = useTourData()
   const [currentScreenIndex, setCurrentScreenIndex] = useState(0)
   const [viewedScreens, setViewedScreens] = useState([])
   const [completedTopics, setCompletedTopics] = useState([])
   const [showCompletion, setShowCompletion] = useState(false)
 
-  const role = tourData.roles.find(r => r.id === roleId)
-  const topic = tourData.topics.find(t => t.id === topicId)
+  const role = tourData?.roles?.find(r => r.id === roleId)
+  const topic = tourData?.topics?.find(t => t.id === topicId)
 
   useEffect(() => {
     const saved = localStorage.getItem('bodhi-tour-completed')
@@ -29,6 +30,16 @@ export default function Explorer() {
       setViewedScreens(prev => [...prev, topic.screens[currentScreenIndex]?.id])
     }
   }, [currentScreenIndex, topic])
+
+  if (loading) {
+    return (
+      <Layout>
+        <div className="flex items-center justify-center min-h-[60vh]">
+          <div className="animate-spin w-8 h-8 border-4 border-bodhi-blue border-t-transparent rounded-full" />
+        </div>
+      </Layout>
+    )
+  }
 
   if (!role || !topic) {
     navigate('/')

@@ -1,13 +1,24 @@
 import { useNavigate } from 'react-router-dom'
 import Layout from '../components/Layout'
 import RoleCard from '../components/RoleCard'
-import tourData from '../data/tourData.json'
+import { useTourData } from '../hooks/useTourData'
 
 export default function RoleSelection() {
   const navigate = useNavigate()
+  const { tourData, loading } = useTourData()
 
   const handleRoleSelect = (roleId) => {
     navigate(`/intro/${roleId}`)
+  }
+
+  if (loading) {
+    return (
+      <Layout>
+        <div className="flex items-center justify-center min-h-[60vh]">
+          <div className="animate-spin w-8 h-8 border-4 border-bodhi-blue border-t-transparent rounded-full" />
+        </div>
+      </Layout>
+    )
   }
 
   return (

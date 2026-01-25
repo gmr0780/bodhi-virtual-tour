@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { api } from './lib/api'
+import Dashboard from './pages/Dashboard'
 
 function LoginPage() {
   return (
@@ -22,7 +23,7 @@ function LoginPage() {
   )
 }
 
-function Dashboard({ user, onLogout }) {
+function Layout({ user, onLogout, children }) {
   return (
     <div className="min-h-screen bg-gray-50">
       <header className="bg-white border-b">
@@ -41,7 +42,7 @@ function Dashboard({ user, onLogout }) {
         </div>
       </header>
       <main className="max-w-7xl mx-auto px-4 py-8">
-        <p className="text-gray-600">Dashboard coming soon...</p>
+        {children}
       </main>
     </div>
   )
@@ -75,7 +76,15 @@ export default function App() {
     <Routes>
       <Route
         path="/"
-        element={user ? <Dashboard user={user} onLogout={handleLogout} /> : <Navigate to="/login" />}
+        element={
+          user ? (
+            <Layout user={user} onLogout={handleLogout}>
+              <Dashboard />
+            </Layout>
+          ) : (
+            <Navigate to="/login" />
+          )
+        }
       />
       <Route
         path="/login"

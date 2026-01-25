@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { api } from './lib/api'
 import Dashboard from './pages/Dashboard'
+import Roles from './pages/Roles'
 
 function LoginPage() {
   return (
@@ -80,6 +81,18 @@ export default function App() {
           user ? (
             <Layout user={user} onLogout={handleLogout}>
               <Dashboard />
+            </Layout>
+          ) : (
+            <Navigate to="/login" />
+          )
+        }
+      />
+      <Route
+        path="/roles"
+        element={
+          user ? (
+            <Layout user={user} onLogout={handleLogout}>
+              <Roles />
             </Layout>
           ) : (
             <Navigate to="/login" />

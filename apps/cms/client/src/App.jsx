@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route, Navigate, Link, useLocation } from 'react-router-dom'
 import { api } from './lib/api'
 import Dashboard from './pages/Dashboard'
 import Roles from './pages/Roles'
@@ -27,25 +27,56 @@ function LoginPage() {
   )
 }
 
-function Layout({ user, onLogout, children }) {
+function Layout({ children, user, onLogout }) {
+  const location = useLocation()
+
+  const navItems = [
+    { path: '/', label: 'Dashboard', icon: 'Home' },
+    { path: '/roles', label: 'Roles', icon: 'Users' },
+    { path: '/topics', label: 'Topics', icon: 'Folder' },
+    { path: '/settings', label: 'Settings', icon: 'Cog' },
+  ]
+
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+    <div className="min-h-screen bg-gray-50 flex">
+      {/* Sidebar */}
+      <aside className="w-64 bg-white border-r flex flex-col">
+        <div className="p-4 border-b">
           <h1 className="text-xl font-bold text-bodhi-blue">Bodhi CMS</h1>
-          <div className="flex items-center gap-4">
-            <img src={user.avatarUrl} alt="" className="w-8 h-8 rounded-full" />
-            <span className="text-sm text-gray-600">{user.githubUsername}</span>
-            <button
-              onClick={onLogout}
-              className="text-sm text-gray-500 hover:text-gray-700"
+        </div>
+        <nav className="flex-1 p-4 space-y-1">
+          {navItems.map(item => (
+            <Link
+              key={item.path}
+              to={item.path}
+              className={`block px-4 py-2 rounded-lg transition-colors ${
+                location.pathname === item.path
+                  ? 'bg-bodhi-blue text-white'
+                  : 'text-gray-700 hover:bg-gray-100'
+              }`}
             >
-              Logout
-            </button>
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+        <div className="p-4 border-t">
+          <div className="flex items-center gap-3">
+            <img src={user.avatarUrl} alt="" className="w-8 h-8 rounded-full" />
+            <div className="flex-1 min-w-0">
+              <div className="text-sm font-medium truncate">{user.githubUsername}</div>
+              <button
+                onClick={onLogout}
+                className="text-xs text-gray-500 hover:text-gray-700"
+              >
+                Logout
+              </button>
+            </div>
           </div>
         </div>
-      </header>
-      <main className="max-w-7xl mx-auto px-4 py-8">
+      </aside>
+
+      {/* Main Content */}
+      <main className="flex-1 p-8">
         {children}
       </main>
     </div>

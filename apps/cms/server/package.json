@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "node --watch src/index.js",
-    "build": "echo 'No build step needed'",
+    "build": "prisma generate",
     "start": "node src/index.js",
+    "postinstall": "prisma generate",
     "db:push": "prisma db push",
     "db:studio": "prisma studio",
     "db:seed": "node prisma/seed.js"
@@ -20,9 +21,7 @@
     "express-session": "^1.18.0",
     "multer": "^1.4.5-lts.1",
     "passport": "^0.7.0",
-    "passport-github2": "^0.1.12"
-  },
-  "devDependencies": {
+    "passport-github2": "^0.1.12",
     "prisma": "^6.0.0"
   }
 }

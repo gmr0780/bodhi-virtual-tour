@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import Hotspot from './Hotspot'
 import FeaturePanel from './FeaturePanel'
 
-export default function ScreenshotView({ screen, onAllHotspotsViewed, isFirstScreen }) {
+export default function ScreenshotView({ screen, onAllHotspotsViewed, isFirstScreen, onIntroComplete }) {
   const [activeHotspot, setActiveHotspot] = useState(null)
   const [viewedHotspots, setViewedHotspots] = useState([])
   const [isGuided, setIsGuided] = useState(false)
@@ -19,6 +19,7 @@ export default function ScreenshotView({ screen, onAllHotspotsViewed, isFirstScr
   // Auto-start guided mode after intro
   const handleStartExploring = () => {
     setShowIntro(false)
+    onIntroComplete?.()
     setTimeout(() => {
       setIsGuided(true)
       setGuidedIndex(0)
@@ -26,6 +27,12 @@ export default function ScreenshotView({ screen, onAllHotspotsViewed, isFirstScr
         handleHotspotClick(screen.hotspots[0], 0)
       }
     }, 300)
+  }
+
+  // Skip intro handler
+  const handleSkipIntro = () => {
+    setShowIntro(false)
+    onIntroComplete?.()
   }
 
   const handleHotspotClick = (hotspot, index) => {
@@ -95,7 +102,7 @@ export default function ScreenshotView({ screen, onAllHotspotsViewed, isFirstScr
             Start Exploring
           </button>
           <button
-            onClick={() => setShowIntro(false)}
+            onClick={handleSkipIntro}
             className="block mx-auto mt-3 text-sm text-gray-500 hover:text-gray-700"
           >
             Skip intro

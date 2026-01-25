@@ -15,6 +15,7 @@ export default function Explorer() {
   const [completedTopics, setCompletedTopics] = useState([])
   const [showCompletion, setShowCompletion] = useState(false)
   const [isTransitioning, setIsTransitioning] = useState(false)
+  const [hasSeenIntro, setHasSeenIntro] = useState(false)
 
   const role = tourData?.roles?.find(r => r.id === roleId)
   const topic = tourData?.topics?.find(t => t.id === topicId)
@@ -200,7 +201,8 @@ export default function Explorer() {
             key={currentScreen.id}
             screen={currentScreen}
             onAllHotspotsViewed={handleAllHotspotsViewed}
-            isFirstScreen={currentScreenIndex === 0 && viewedScreens.length === 0}
+            isFirstScreen={currentScreenIndex === 0 && !hasSeenIntro}
+            onIntroComplete={() => setHasSeenIntro(true)}
           />
         </div>
 

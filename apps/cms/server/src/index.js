@@ -9,6 +9,7 @@ import screensRouter from './routes/screens.js'
 import hotspotsRouter from './routes/hotspots.js'
 import settingsRouter from './routes/settings.js'
 import publishRouter from './routes/publish.js'
+import uploadRouter from './routes/upload.js'
 
 dotenv.config()
 
@@ -72,6 +73,7 @@ app.use('/api/screens', requireAuth, screensRouter)
 app.use('/api/hotspots', requireAuth, hotspotsRouter)
 app.use('/api/settings', requireAuth, settingsRouter)
 app.use('/api/publish', requireAuth, publishRouter)
+app.use('/api/upload', requireAuth, uploadRouter)
 
 // Export app for adding routes in other files
 export { app }

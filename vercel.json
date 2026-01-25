@@ -1,4 +1,7 @@
 {
+  "buildCommand": "cd apps/tour && npm run build",
+  "outputDirectory": "apps/tour/dist",
+  "installCommand": "npm install && cd apps/tour && npm install",
   "rewrites": [
     { "source": "/(.*)", "destination": "/" }
   ]

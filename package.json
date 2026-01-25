@@ -6,6 +6,8 @@
     "apps/cms/*"
   ],
   "scripts": {
+    "start": "cd apps/cms/server && node src/index.js",
+    "build": "cd apps/cms/server && npm install && npx prisma generate",
     "tour:dev": "npm run dev -w apps/tour",
     "tour:build": "npm run build -w apps/tour",
     "cms:dev": "npm run dev -w apps/cms/server & npm run dev -w apps/cms/client",

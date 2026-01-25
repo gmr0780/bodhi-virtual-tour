@@ -14,7 +14,7 @@ function LoginPage() {
         <h1 className="text-2xl font-bold text-bodhi-blue mb-2">Bodhi CMS</h1>
         <p className="text-gray-600 mb-6">Sign in to manage your virtual tour content</p>
         <a
-          href="/api/auth/github"
+          href={`${import.meta.env.VITE_API_URL || '/api'}/auth/github`}
           className="inline-flex items-center gap-2 bg-gray-900 text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition-colors"
         >
           <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { SparklesIcon, ChevronLeftIcon, ChevronRightIcon } from './icons'
 
 export default function FeaturePanel({
@@ -9,10 +10,27 @@ export default function FeaturePanel({
   onPrev,
   onExitGuided
 }) {
+  const [isVisible, setIsVisible] = useState(false)
+  const [displayedHotspot, setDisplayedHotspot] = useState(hotspot)
+
+  useEffect(() => {
+    if (hotspot) {
+      setIsVisible(false)
+      const timer = setTimeout(() => {
+        setDisplayedHotspot(hotspot)
+        setIsVisible(true)
+      }, 150)
+      return () => clearTimeout(timer)
+    }
+  }, [hotspot?.id])
+
   if (!hotspot) {
     return (
       <div className="h-full flex items-center justify-center text-center p-8">
-        <div>
+        <div className="animate-pulse">
+          <div className="w-12 h-12 bg-bodhi-blue/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-6 h-6 border-2 border-bodhi-blue/30 border-t-bodhi-blue rounded-full animate-spin" />
+          </div>
           <p className="text-gray-500 mb-2">Click a hotspot to learn more</p>
           <p className="text-sm text-gray-400">Or use "Guide Me" for a step-by-step walkthrough</p>
         </div>
@@ -21,9 +39,9 @@ export default function FeaturePanel({
   }
 
   return (
-    <div className="h-full flex flex-col p-6">
+    <div className={`h-full flex flex-col p-6 transition-all duration-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}>
       <div className="flex-1">
-        {hotspot.aiPowered && (
+        {displayedHotspot?.aiPowered && (
           <div className="flex items-center gap-2 text-bodhi-accent mb-3">
             <SparklesIcon className="w-4 h-4" />
             <span className="text-sm font-medium">Powered by Bodhi AI</span>
@@ -31,11 +49,11 @@ export default function FeaturePanel({
         )}
 
         <h3 className="text-xl font-bold text-gray-900 mb-4">
-          {hotspot.title}
+          {displayedHotspot?.title}
         </h3>
 
         <p className="text-gray-600 leading-relaxed">
-          {hotspot.description}
+          {displayedHotspot?.description}
         </p>
       </div>
 

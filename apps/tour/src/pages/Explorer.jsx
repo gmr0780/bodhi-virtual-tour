@@ -14,6 +14,7 @@ export default function Explorer() {
   const [viewedScreens, setViewedScreens] = useState([])
   const [completedTopics, setCompletedTopics] = useState([])
   const [showCompletion, setShowCompletion] = useState(false)
+  const [isTransitioning, setIsTransitioning] = useState(false)
 
   const role = tourData?.roles?.find(r => r.id === roleId)
   const topic = tourData?.topics?.find(t => t.id === topicId)
@@ -68,7 +69,11 @@ export default function Explorer() {
 
   const nextScreen = () => {
     if (currentScreenIndex < topic.screens.length - 1) {
-      setCurrentScreenIndex(prev => prev + 1)
+      setIsTransitioning(true)
+      setTimeout(() => {
+        setCurrentScreenIndex(prev => prev + 1)
+        setIsTransitioning(false)
+      }, 300)
     } else {
       markTopicComplete()
     }
@@ -76,7 +81,11 @@ export default function Explorer() {
 
   const prevScreen = () => {
     if (currentScreenIndex > 0) {
-      setCurrentScreenIndex(prev => prev - 1)
+      setIsTransitioning(true)
+      setTimeout(() => {
+        setCurrentScreenIndex(prev => prev - 1)
+        setIsTransitioning(false)
+      }, 300)
     }
   }
 
@@ -186,11 +195,14 @@ export default function Explorer() {
         </div>
 
         {/* Screenshot View */}
-        <ScreenshotView
-          key={currentScreen.id}
-          screen={currentScreen}
-          onAllHotspotsViewed={handleAllHotspotsViewed}
-        />
+        <div className={`transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
+          <ScreenshotView
+            key={currentScreen.id}
+            screen={currentScreen}
+            onAllHotspotsViewed={handleAllHotspotsViewed}
+            isFirstScreen={currentScreenIndex === 0 && viewedScreens.length === 0}
+          />
+        </div>
 
         {/* Thumbnails */}
         <div className="mt-6">

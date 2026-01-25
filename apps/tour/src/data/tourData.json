@@ -151,28 +151,28 @@
         {
           "id": "operations-dashboard",
           "title": "Operations Dashboard",
-          "image": "/screenshots/operations-dashboard.png",
+          "image": "https://raw.githubusercontent.com/gmr0780/bodhi-virtual-tour/main/public/screenshots/operations-dashboard-1769345604929.png",
           "hotspots": [
             {
               "id": "multi-property",
-              "x": 20,
-              "y": 25,
+              "x": 20.15771315919172,
+              "y": 8.761842177317781,
               "title": "Multi-Property View",
               "description": "Manage all your properties from one dashboard. Switch between properties or view portfolio-wide metrics.",
-              "aiPowered": false
+              "aiPowered": true
             },
             {
               "id": "alerts",
-              "x": 75,
-              "y": 30,
+              "x": 31.39477575160177,
+              "y": 21.7293685997481,
               "title": "Proactive Alerts",
               "description": "Bodhi AI detects potential issues before they become problems. Get alerts for leaks, temperature anomalies, and equipment issues.",
               "aiPowered": true
             },
             {
               "id": "ticket-management",
-              "x": 50,
-              "y": 65,
+              "x": 82.25726959093149,
+              "y": 3.855210558019824,
               "title": "Ticket Management",
               "description": "Maintenance tickets auto-generate from alerts. Track status, assign staff, and monitor resolution times.",
               "aiPowered": true

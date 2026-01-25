@@ -6,7 +6,12 @@
       "description": "See how Bodhi improves guest satisfaction and reduces costs",
       "icon": "building",
       "videoUrl": "",
-      "recommendedTopics": ["energy", "guest", "operations", "hardware"]
+      "recommendedTopics": [
+        "energy",
+        "guest",
+        "operations",
+        "hardware"
+      ]
     },
     {
       "id": "engineering",
@@ -14,7 +19,12 @@
       "description": "See how Bodhi streamlines maintenance and building operations",
       "icon": "wrench",
       "videoUrl": "",
-      "recommendedTopics": ["operations", "hardware", "energy", "guest"]
+      "recommendedTopics": [
+        "operations",
+        "hardware",
+        "energy",
+        "guest"
+      ]
     },
     {
       "id": "it",
@@ -22,7 +32,12 @@
       "description": "See how Bodhi integrates with your existing systems",
       "icon": "server",
       "videoUrl": "",
-      "recommendedTopics": ["hardware", "operations", "energy", "guest"]
+      "recommendedTopics": [
+        "hardware",
+        "operations",
+        "energy",
+        "guest"
+      ]
     }
   ],
   "topics": [
@@ -39,8 +54,8 @@
           "hotspots": [
             {
               "id": "realtime-usage",
-              "x": 25,
-              "y": 20,
+              "x": 23.31197634302612,
+              "y": 31.1921581512513,
               "title": "Real-time Energy Usage",
               "description": "Monitor energy consumption across all properties in real-time. Bodhi AI identifies usage patterns and anomalies automatically.",
               "aiPowered": true
@@ -245,7 +260,7 @@
     }
   ],
   "cta": {
-    "text": "Book a Demo",
-    "url": "https://www.gobodhi.com/contact"
+    "url": "https://www.gobodhi.com/contact",
+    "text": "Book a Demo"
   }
 }

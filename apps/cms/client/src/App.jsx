@@ -4,6 +4,7 @@ import { api } from './lib/api'
 import Dashboard from './pages/Dashboard'
 import Roles from './pages/Roles'
 import Topics from './pages/Topics'
+import Screens from './pages/Screens'
 
 function LoginPage() {
   return (
@@ -106,6 +107,18 @@ export default function App() {
           user ? (
             <Layout user={user} onLogout={handleLogout}>
               <Topics />
+            </Layout>
+          ) : (
+            <Navigate to="/login" />
+          )
+        }
+      />
+      <Route
+        path="/topics/:topicId/screens"
+        element={
+          user ? (
+            <Layout user={user} onLogout={handleLogout}>
+              <Screens />
             </Layout>
           ) : (
             <Navigate to="/login" />

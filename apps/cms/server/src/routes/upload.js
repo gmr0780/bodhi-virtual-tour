@@ -48,11 +48,10 @@ router.post('/screenshot', upload.single('image'), async (req, res) => {
       }
     })
 
-    // Return the tour URL where images will be accessible after Vercel deploys
-    const tourUrl = process.env.TOUR_URL || 'https://bodhi-virtual-tour.vercel.app'
+    // Return raw GitHub URL - immediately available after upload
     res.json({
       success: true,
-      path: `${tourUrl}/screenshots/${filename}`
+      path: `https://raw.githubusercontent.com/${owner}/${repo}/main/public/screenshots/${filename}`
     })
   } catch (err) {
     res.status(500).json({ error: err.message })

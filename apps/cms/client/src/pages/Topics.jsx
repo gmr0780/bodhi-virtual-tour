@@ -157,49 +157,58 @@ export default function Topics() {
         </div>
       )}
 
-      <div className="bg-white rounded-xl shadow-sm border">
-        {topics.length === 0 ? (
-          <div className="p-8 text-center text-gray-500">
-            No topics yet. Click "Add Topic" to create one.
-          </div>
-        ) : (
-          <div className="divide-y">
-            {topics.map((topic) => (
-              <div key={topic.id} className="p-4">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4">
-                    <div className="text-2xl">{topic.icon}</div>
-                    <div>
-                      <div className="font-medium text-gray-900">{topic.name}</div>
-                      <div className="text-sm text-gray-500 line-clamp-1">{topic.description}</div>
-                    </div>
-                  </div>
-                  <div className="flex gap-2">
-                    <Link
-                      to={`/topics/${topic.id}/screens`}
-                      className="text-bodhi-blue hover:text-blue-700 px-3 py-1"
-                    >
-                      Screens ({topic.screens?.length || 0})
-                    </Link>
-                    <button
-                      onClick={() => setEditing(topic)}
-                      className="text-bodhi-blue hover:text-blue-700 px-3 py-1"
-                    >
-                      Edit
-                    </button>
-                    <button
-                      onClick={() => handleDelete(topic)}
-                      className="text-red-600 hover:text-red-700 px-3 py-1"
-                    >
-                      Delete
-                    </button>
-                  </div>
+      {topics.length === 0 ? (
+        <div className="bg-white rounded-xl shadow-sm border p-8 text-center text-gray-500">
+          No topics yet. Click "Add Topic" to create one.
+        </div>
+      ) : (
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {topics.map((topic) => (
+            <div key={topic.id} className="bg-white rounded-xl shadow-sm border p-5 hover:shadow-md transition-shadow">
+              <div className="flex items-start gap-3 mb-3">
+                <div className="w-10 h-10 bg-bodhi-blue/10 rounded-lg flex items-center justify-center text-bodhi-blue text-lg flex-shrink-0">
+                  {topic.icon}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-semibold text-gray-900 truncate">{topic.name}</h3>
+                  <p className="text-sm text-gray-500 line-clamp-2 mt-0.5">{topic.description}</p>
                 </div>
               </div>
-            ))}
-          </div>
-        )}
-      </div>
+              <div className="flex items-center justify-between pt-3 border-t">
+                <Link
+                  to={`/topics/${topic.id}/screens`}
+                  className="text-sm font-medium text-bodhi-blue hover:text-blue-700 flex items-center gap-1"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                  </svg>
+                  {topic.screens?.length || 0} Screens
+                </Link>
+                <div className="flex gap-1">
+                  <button
+                    onClick={() => setEditing(topic)}
+                    className="p-2 text-gray-400 hover:text-bodhi-blue hover:bg-gray-100 rounded-lg transition-colors"
+                    title="Edit"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                    </svg>
+                  </button>
+                  <button
+                    onClick={() => handleDelete(topic)}
+                    className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                    title="Delete"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   )
 }

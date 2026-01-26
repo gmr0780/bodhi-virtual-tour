@@ -42,10 +42,7 @@ export default function ScreenshotView({ screen, onAllHotspotsViewed, isFirstScr
     if (!viewedHotspots.includes(hotspot.id)) {
       const newViewed = [...viewedHotspots, hotspot.id]
       setViewedHotspots(newViewed)
-
-      if (newViewed.length === screen.hotspots.length) {
-        onAllHotspotsViewed?.()
-      }
+      // Don't call onAllHotspotsViewed here - let them see the content first
     }
 
     if (isGuided) {
@@ -79,6 +76,9 @@ export default function ScreenshotView({ screen, onAllHotspotsViewed, isFirstScr
     setShowCompletion(false)
     if (hasNextScreen && onNextScreen) {
       onNextScreen()
+    } else {
+      // Last screen - notify parent that topic is complete
+      onAllHotspotsViewed?.()
     }
   }
 

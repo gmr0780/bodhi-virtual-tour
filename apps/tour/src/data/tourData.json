@@ -322,6 +322,37 @@
           ]
         },
         {
+          "id": "guest-inroom-dining",
+          "title": "In-Room Dining",
+          "image": "/screenshots/guest-inroom-dining.png",
+          "hotspots": [
+            {
+              "id": "restaurant-menu",
+              "x": 30,
+              "y": 35,
+              "title": "Digital Menu Browsing",
+              "description": "Guests browse full restaurant menus with rich descriptions, photos, and pricing. Filter by cuisine type, dietary restrictions, or meal time - making ordering effortless.",
+              "aiPowered": false
+            },
+            {
+              "id": "easy-ordering",
+              "x": 70,
+              "y": 35,
+              "title": "One-Tap Ordering",
+              "description": "Select items, customize orders, and submit - all from the comfort of their room. Orders route directly to the kitchen with room number and special instructions included.",
+              "aiPowered": false
+            },
+            {
+              "id": "meal-tabs",
+              "x": 50,
+              "y": 12,
+              "title": "Meal Time Categories",
+              "description": "Switch between Breakfast, Brunch, Lunch, and Dinner menus instantly. Menus update automatically based on restaurant hours and availability.",
+              "aiPowered": false
+            }
+          ]
+        },
+        {
           "id": "room-status-dashboard",
           "title": "Room Status Dashboard (Admin)",
           "image": "/screenshots/guest-app.png",

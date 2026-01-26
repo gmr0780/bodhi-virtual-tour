@@ -151,19 +151,29 @@ router.post('/import', async (req, res) => {
     const content = Buffer.from(data.content, 'base64').toString('utf-8')
     const tourData = JSON.parse(content)
 
-    // Clear existing data in a transaction
-    await prisma.$transaction([
-      prisma.hotspot.deleteMany(),
-      prisma.screen.deleteMany(),
-      prisma.topic.deleteMany(),
-      prisma.role.deleteMany()
-    ])
+    // Clear existing data (in order due to foreign keys)
+    console.log('Clearing existing data...')
+    await prisma.hotspot.deleteMany()
+    await prisma.screen.deleteMany()
+    await prisma.topic.deleteMany()
+    await prisma.role.deleteMany()
+    console.log('Data cleared')
 
-    // Import roles
+    // Import roles using upsert
+    console.log('Importing roles...')
     for (let i = 0; i < tourData.roles.length; i++) {
       const role = tourData.roles[i]
-      await prisma.role.create({
-        data: {
+      await prisma.role.upsert({
+        where: { id: role.id },
+        update: {
+          name: role.name,
+          description: role.description || '',
+          icon: role.icon || 'building',
+          videoUrl: role.videoUrl || '',
+          recommendedTopics: role.recommendedTopics || [],
+          order: i
+        },
+        create: {
           id: role.id,
           name: role.name,
           description: role.description || '',
@@ -176,36 +186,77 @@ router.post('/import', async (req, res) => {
     }
 
     // Import topics with screens and hotspots
+    console.log('Importing topics...')
     for (let i = 0; i < tourData.topics.length; i++) {
       const topic = tourData.topics[i]
-      await prisma.topic.create({
-        data: {
+
+      // Upsert topic first
+      await prisma.topic.upsert({
+        where: { id: topic.id },
+        update: {
+          name: topic.name,
+          description: topic.description || '',
+          icon: topic.icon || 'folder',
+          order: i
+        },
+        create: {
           id: topic.id,
           name: topic.name,
           description: topic.description || '',
           icon: topic.icon || 'folder',
-          order: i,
-          screens: {
-            create: (topic.screens || []).map((screen, si) => ({
-              id: screen.id,
-              title: screen.title,
-              imagePath: screen.image || '',
-              order: si,
-              hotspots: {
-                create: (screen.hotspots || []).map((hotspot, hi) => ({
-                  id: hotspot.id,
-                  x: hotspot.x,
-                  y: hotspot.y,
-                  title: hotspot.title,
-                  description: hotspot.description || '',
-                  aiPowered: hotspot.aiPowered || false,
-                  order: hi
-                }))
-              }
-            }))
-          }
+          order: i
         }
       })
+
+      // Import screens for this topic
+      for (let si = 0; si < (topic.screens || []).length; si++) {
+        const screen = topic.screens[si]
+
+        await prisma.screen.upsert({
+          where: { id: screen.id },
+          update: {
+            title: screen.title,
+            imagePath: screen.image || '',
+            order: si,
+            topicId: topic.id
+          },
+          create: {
+            id: screen.id,
+            title: screen.title,
+            imagePath: screen.image || '',
+            order: si,
+            topicId: topic.id
+          }
+        })
+
+        // Import hotspots for this screen
+        for (let hi = 0; hi < (screen.hotspots || []).length; hi++) {
+          const hotspot = screen.hotspots[hi]
+
+          await prisma.hotspot.upsert({
+            where: { id: hotspot.id },
+            update: {
+              x: hotspot.x,
+              y: hotspot.y,
+              title: hotspot.title,
+              description: hotspot.description || '',
+              aiPowered: hotspot.aiPowered || false,
+              order: hi,
+              screenId: screen.id
+            },
+            create: {
+              id: hotspot.id,
+              x: hotspot.x,
+              y: hotspot.y,
+              title: hotspot.title,
+              description: hotspot.description || '',
+              aiPowered: hotspot.aiPowered || false,
+              order: hi,
+              screenId: screen.id
+            }
+          })
+        }
+      }
     }
 
     // Import CTA setting if present

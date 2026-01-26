@@ -7,11 +7,11 @@
       "icon": "building",
       "videoUrl": "https://www.youtube.com/watch?v=Fg9LOGZ4kS8",
       "recommendedTopics": [
-        "ai",
+        "results",
         "guest",
+        "ai",
         "energy",
-        "operations",
-        "hardware"
+        "operations"
       ]
     },
     {
@@ -495,6 +495,68 @@
               "y": 60,
               "title": "Secure Open API",
               "description": "SOC 2 Type II and ISO 27001 certified. End-to-end encryption with strict user access controls. Full REST API for custom integrations - connect Bodhi to your existing tech stack while meeting rigorous security standards.",
+              "aiPowered": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "results",
+      "name": "Business Results",
+      "description": "Proven ROI and guest satisfaction improvements",
+      "icon": "check",
+      "screens": [
+        {
+          "id": "results-stats",
+          "title": "Proven Results",
+          "image": "/screenshots/results-stats.png",
+          "hotspots": [
+            {
+              "id": "maximize-efficiency",
+              "x": 15,
+              "y": 55,
+              "title": "Maximize Efficiency, Minimize Costs",
+              "description": "Bodhi makes it easier to serve your clients and adds to your operating profits. Save energy, save labor, provide better service, and avoid the most expensive problems likely to affect your property.",
+              "aiPowered": false
+            },
+            {
+              "id": "improve-satisfaction",
+              "x": 40,
+              "y": 70,
+              "title": "Improve Guest Satisfaction",
+              "description": "Give guests and staff a better experience. Properties using Bodhi see measurable improvements in guest satisfaction scores and fewer complaints about room comfort.",
+              "aiPowered": false
+            },
+            {
+              "id": "multi-property",
+              "x": 65,
+              "y": 70,
+              "title": "Multi-Building Management",
+              "description": "Manage your entire portfolio of properties from a single login and dashboard. Consistent guest experiences across all locations with centralized control.",
+              "aiPowered": false
+            }
+          ]
+        },
+        {
+          "id": "results-customers",
+          "title": "Customer Success",
+          "image": "/screenshots/results-customers.png",
+          "hotspots": [
+            {
+              "id": "proven-results",
+              "x": 50,
+              "y": 55,
+              "title": "Trusted by Leading Brands",
+              "description": "Top hotels, resorts, and commercial properties trust Bodhi to streamline operations, enhance guest experiences, and optimize energy efficiency. Join Montage, Four Seasons, Hyatt, and more.",
+              "aiPowered": false
+            },
+            {
+              "id": "property-monitoring",
+              "x": 85,
+              "y": 25,
+              "title": "Property-wide Centralized Monitoring",
+              "description": "Monitor all of your crucial systems across your entire property from one central dashboard. From guest rooms to common areas to back-of-house - complete visibility.",
               "aiPowered": false
             }
           ]

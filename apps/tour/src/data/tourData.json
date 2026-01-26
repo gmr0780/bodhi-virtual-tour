@@ -114,7 +114,7 @@
       "screens": [
         {
           "id": "guest-mobile-app",
-          "title": "Guest Mobile App",
+          "title": "Guest App Home",
           "image": "/screenshots/guest-mobile-app.png",
           "hotspots": [
             {
@@ -152,32 +152,132 @@
           ]
         },
         {
+          "id": "guest-room-controls",
+          "title": "Room Controls",
+          "image": "/screenshots/guest-room-controls.png",
+          "hotspots": [
+            {
+              "id": "scenes",
+              "x": 50,
+              "y": 28,
+              "title": "Personalized Scenes",
+              "description": "One-tap scenes like 'Good Morning', 'Relax', or 'Grand Welcome' instantly adjust lighting, temperature, and shades. Guests feel pampered with automated settings that create the perfect ambiance.",
+              "aiPowered": true
+            },
+            {
+              "id": "lights-shades",
+              "x": 35,
+              "y": 48,
+              "title": "Lighting & Shades Control",
+              "description": "Full control over room lighting and drapes from one screen. Guests can dim lights, close blackout shades, or create their ideal environment without hunting for switches.",
+              "aiPowered": false
+            },
+            {
+              "id": "thermostat",
+              "x": 25,
+              "y": 72,
+              "title": "Climate Control",
+              "description": "Guests set their ideal temperature and Bodhi remembers their preferences for future stays. No more too-hot or too-cold complaints - just personalized comfort.",
+              "aiPowered": true
+            }
+          ]
+        },
+        {
+          "id": "guest-bodhi-gpt",
+          "title": "Bodhi GPT Assistant",
+          "image": "/screenshots/guest-bodhi-gpt.png",
+          "hotspots": [
+            {
+              "id": "ai-concierge",
+              "x": 50,
+              "y": 35,
+              "title": "AI-Powered Concierge",
+              "description": "Guests can ask anything - dinner recommendations, amenity hours, nearby attractions, or report issues. Bodhi GPT provides instant, accurate answers 24/7, reducing front desk calls while improving guest satisfaction.",
+              "aiPowered": true
+            },
+            {
+              "id": "quick-prompts",
+              "x": 50,
+              "y": 55,
+              "title": "Smart Suggestions",
+              "description": "Pre-built prompts help guests discover what they need faster. From 'What are the dinner options?' to 'I'd like to report an issue' - common requests are just one tap away.",
+              "aiPowered": true
+            }
+          ]
+        },
+        {
+          "id": "guest-tv-controls",
+          "title": "TV Controls",
+          "image": "/screenshots/guest-tv-controls.png",
+          "hotspots": [
+            {
+              "id": "tv-remote",
+              "x": 50,
+              "y": 40,
+              "title": "Full TV Remote Access",
+              "description": "No more hunting for lost remotes. Guests control the TV from their phone - power, volume, channels, and streaming apps. It's familiar, intuitive, and always within reach.",
+              "aiPowered": false
+            }
+          ]
+        },
+        {
+          "id": "guest-amenities",
+          "title": "Amenities Discovery",
+          "image": "/screenshots/guest-amenities.png",
+          "hotspots": [
+            {
+              "id": "dining",
+              "x": 25,
+              "y": 30,
+              "title": "Restaurant Discovery",
+              "description": "Guests explore on-site dining options with menus, hours, and reservation links. From casual buffets to fine dining - all the information they need to plan their perfect meal.",
+              "aiPowered": false
+            },
+            {
+              "id": "spa-wellness",
+              "x": 75,
+              "y": 50,
+              "title": "Spa & Wellness",
+              "description": "Discover spa services, book treatments, and plan wellness activities. Guests can browse available services and book directly from the app.",
+              "aiPowered": false
+            },
+            {
+              "id": "activities",
+              "x": 50,
+              "y": 75,
+              "title": "Activities & Entertainment",
+              "description": "From golf to nightlife, guests discover everything your property offers. Rich descriptions and booking options turn curiosity into reservations.",
+              "aiPowered": false
+            }
+          ]
+        },
+        {
           "id": "room-status-dashboard",
-          "title": "Room Status Dashboard",
+          "title": "Room Status Dashboard (Admin)",
           "image": "/screenshots/guest-app.png",
           "hotspots": [
             {
               "id": "check-in-status",
               "x": 25,
               "y": 35,
-              "title": "Check-in Status",
-              "description": "Real-time view of guest check-in and occupancy status across all rooms. See who's arriving and departing today.",
+              "title": "Real-Time Room Status",
+              "description": "Your team sees check-in status, occupancy, and service requests across all rooms at a glance. Preemptive room checks ensure everything is perfect before guests arrive.",
               "aiPowered": false
             },
             {
               "id": "dnd-overview",
               "x": 45,
               "y": 35,
-              "title": "Do Not Disturb Overview",
-              "description": "See which rooms have DND enabled to optimize housekeeping routes and schedules.",
+              "title": "Housekeeping Optimization",
+              "description": "See which rooms have DND enabled to optimize housekeeping routes. Your team knows exactly which rooms to clean and when - no wasted trips, no guest disturbances.",
               "aiPowered": false
             },
             {
               "id": "service-requests-queue",
               "x": 75,
               "y": 35,
-              "title": "Service Requests Queue",
-              "description": "Track and manage all incoming guest service requests. See request status and assign to staff.",
+              "title": "Service Request Tracking",
+              "description": "All guest requests in one place. Track status, assign staff, and ensure nothing falls through the cracks. Faster response times mean happier guests.",
               "aiPowered": true
             }
           ]

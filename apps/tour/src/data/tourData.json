@@ -3,12 +3,13 @@
     {
       "id": "gm",
       "name": "Hotel General Manager",
-      "description": "See how Bodhi improves guest satisfaction and reduces costs",
+      "description": "Deliver exceptional guest experiences, eliminate complaints, and strengthen brand reputation",
       "icon": "building",
       "videoUrl": "",
+      "tagline": "Trusted by Montage, Four Seasons, and Marriott",
       "recommendedTopics": [
-        "energy",
         "guest",
+        "energy",
         "operations",
         "hardware"
       ]
@@ -16,9 +17,10 @@
     {
       "id": "engineering",
       "name": "Director of Engineering",
-      "description": "See how Bodhi streamlines maintenance and building operations",
+      "description": "Reduce reactive calls, automate monitoring, and free your team for high-value work",
       "icon": "wrench",
       "videoUrl": "",
+      "tagline": "Less firefighting, more planned maintenance",
       "recommendedTopics": [
         "operations",
         "hardware",
@@ -29,9 +31,10 @@
     {
       "id": "it",
       "name": "Director of IT",
-      "description": "See how Bodhi integrates with your existing systems",
+      "description": "Secure, hardware-agnostic platform with SOC 2 Type II and ISO 27001 certifications",
       "icon": "server",
       "videoUrl": "",
+      "tagline": "No vendor lock-in, minimal network impact",
       "recommendedTopics": [
         "hardware",
         "operations",
@@ -56,24 +59,24 @@
               "id": "realtime-usage",
               "x": 23.31197634302612,
               "y": 31.1921581512513,
-              "title": "Real-time Energy Usage",
-              "description": "Monitor energy consumption across all properties in real-time. Bodhi AI identifies usage patterns and anomalies automatically.",
+              "title": "Centralized Monitoring & AI Insights",
+              "description": "Monitor HVAC, lighting, and equipment status in real-time from a single platform. Bodhi's AI detects inefficiencies and recommends actions - reducing the need to check multiple systems manually.",
               "aiPowered": true
             },
             {
               "id": "savings-tracker",
               "x": 70,
               "y": 35,
-              "title": "Savings Tracker",
-              "description": "Track your actual savings compared to baseline. See ROI metrics and projected annual savings.",
+              "title": "Measurable Energy Savings",
+              "description": "Track actual savings compared to baseline with clear ROI metrics. Properties typically see 30-45% reduction in energy costs while maintaining - or improving - guest comfort.",
               "aiPowered": false
             },
             {
               "id": "occupancy-automation",
               "x": 45,
               "y": 60,
-              "title": "Occupancy-Based Automation",
-              "description": "Automatically adjust climate and lighting based on room occupancy. Bodhi AI learns guest patterns to optimize comfort and efficiency.",
+              "title": "AI-Powered Personalization",
+              "description": "Bodhi learns guest preferences and occupancy patterns to create tailored experiences. Rooms are automatically optimized before arrival - ideal temperatures, personalized lighting scenes - enhancing comfort while eliminating energy waste.",
               "aiPowered": true
             }
           ]
@@ -118,32 +121,32 @@
               "id": "entry-door",
               "x": 18,
               "y": 32,
-              "title": "Mobile Key Access",
-              "description": "Guests unlock their room door directly from the app. No physical keys needed - just tap to unlock.",
+              "title": "Seamless Mobile Key Access",
+              "description": "Deliver an exceptional guest experience from the moment they arrive. Guests unlock their room with a single tap - no waiting at the front desk, no lost key cards. This frictionless entry sets the tone for a luxurious, effortless stay.",
               "aiPowered": false
             },
             {
               "id": "do-not-disturb",
               "x": 40,
               "y": 32,
-              "title": "Do Not Disturb",
-              "description": "One-tap privacy controls. Sets DND status and syncs with housekeeping schedules automatically.",
+              "title": "One-Tap Privacy Controls",
+              "description": "Guests control their privacy instantly. DND status syncs automatically with housekeeping schedules, eliminating awkward interruptions and ensuring every guest feels respected and comfortable.",
               "aiPowered": false
             },
             {
               "id": "housekeeping",
               "x": 62,
               "y": 32,
-              "title": "Housekeeping Requests",
-              "description": "Request room cleaning, fresh towels, or specific services. Requests route directly to housekeeping staff.",
+              "title": "Instant Service Requests",
+              "description": "Requests for cleaning, towels, or amenities route directly to the right team. No phone calls, no waiting on hold. Guests get faster service, and your staff gets clear, actionable requests.",
               "aiPowered": false
             },
             {
               "id": "valet",
               "x": 40,
               "y": 52,
-              "title": "Valet Services",
-              "description": "Request your vehicle with one tap. Get notified when your car is ready at the entrance.",
+              "title": "Effortless Valet Services",
+              "description": "One tap to request their vehicle. Guests are notified when their car is ready - no standing around waiting. These small touches add up to glowing reviews and repeat bookings.",
               "aiPowered": false
             }
           ]
@@ -227,16 +230,16 @@
               "id": "leak-detection",
               "x": 35,
               "y": 40,
-              "title": "Leak & Flood Detection",
-              "description": "Sensors detect water issues immediately. Automatic alerts prevent costly damage.",
-              "aiPowered": false
+              "title": "Preemptive Issue Detection",
+              "description": "Bodhi continuously monitors for leaks, HVAC issues, and equipment anomalies. Problems are flagged before guests notice - giving your team time to resolve issues proactively, not reactively.",
+              "aiPowered": true
             },
             {
               "id": "predictive",
               "x": 65,
               "y": 40,
-              "title": "Predictive Maintenance",
-              "description": "Bodhi AI analyzes equipment patterns to predict failures before they happen. Schedule maintenance proactively.",
+              "title": "Predictive Maintenance with AI",
+              "description": "Bodhi's AI identifies equipment issues before failure, enabling repairs on YOUR schedule. No more emergency callouts, no more firefighting. Your team spends less time reacting and more time on planned, high-value work.",
               "aiPowered": true
             }
           ]
@@ -281,16 +284,16 @@
               "id": "pms-integration",
               "x": 40,
               "y": 30,
-              "title": "PMS Integration",
-              "description": "Connects with Opera, Mews, and other property management systems. Guest data syncs automatically.",
+              "title": "Hardware Agnostic Integration",
+              "description": "Bodhi supports BACnet, KNX, Modbus, and REST APIs - no vendor lock-in. Works with your existing HVAC, lighting, AV, and access control systems without needing replacements or extra configuration work.",
               "aiPowered": false
             },
             {
               "id": "api-access",
               "x": 60,
               "y": 60,
-              "title": "API Access",
-              "description": "Full REST API for custom integrations. Connect Bodhi to your existing tech stack.",
+              "title": "Secure Open API",
+              "description": "SOC 2 Type II and ISO 27001 certified. End-to-end encryption with strict user access controls. Full REST API for custom integrations - connect Bodhi to your existing tech stack while meeting rigorous security standards.",
               "aiPowered": false
             }
           ]

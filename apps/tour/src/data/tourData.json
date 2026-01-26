@@ -110,33 +110,72 @@
       "icon": "smartphone",
       "screens": [
         {
-          "id": "guest-app",
+          "id": "guest-mobile-app",
           "title": "Guest Mobile App",
+          "image": "/screenshots/guest-mobile-app.png",
+          "hotspots": [
+            {
+              "id": "entry-door",
+              "x": 18,
+              "y": 32,
+              "title": "Mobile Key Access",
+              "description": "Guests unlock their room door directly from the app. No physical keys needed - just tap to unlock.",
+              "aiPowered": false
+            },
+            {
+              "id": "do-not-disturb",
+              "x": 40,
+              "y": 32,
+              "title": "Do Not Disturb",
+              "description": "One-tap privacy controls. Sets DND status and syncs with housekeeping schedules automatically.",
+              "aiPowered": false
+            },
+            {
+              "id": "housekeeping",
+              "x": 62,
+              "y": 32,
+              "title": "Housekeeping Requests",
+              "description": "Request room cleaning, fresh towels, or specific services. Requests route directly to housekeeping staff.",
+              "aiPowered": false
+            },
+            {
+              "id": "valet",
+              "x": 40,
+              "y": 52,
+              "title": "Valet Services",
+              "description": "Request your vehicle with one tap. Get notified when your car is ready at the entrance.",
+              "aiPowered": false
+            }
+          ]
+        },
+        {
+          "id": "room-status-dashboard",
+          "title": "Room Status Dashboard",
           "image": "/screenshots/guest-app.png",
           "hotspots": [
             {
-              "id": "mobile-key",
-              "x": 50,
-              "y": 30,
-              "title": "Mobile Key Access",
-              "description": "Guests unlock their room with their smartphone. No physical keys to manage or replace.",
+              "id": "check-in-status",
+              "x": 25,
+              "y": 35,
+              "title": "Check-in Status",
+              "description": "Real-time view of guest check-in and occupancy status across all rooms. See who's arriving and departing today.",
               "aiPowered": false
             },
             {
-              "id": "room-controls",
-              "x": 50,
-              "y": 55,
-              "title": "In-Room Controls",
-              "description": "Guests control lighting, temperature, and shades from their phone. Preferences sync automatically for return visits.",
+              "id": "dnd-overview",
+              "x": 45,
+              "y": 35,
+              "title": "Do Not Disturb Overview",
+              "description": "See which rooms have DND enabled to optimize housekeeping routes and schedules.",
+              "aiPowered": false
+            },
+            {
+              "id": "service-requests-queue",
+              "x": 75,
+              "y": 35,
+              "title": "Service Requests Queue",
+              "description": "Track and manage all incoming guest service requests. See request status and assign to staff.",
               "aiPowered": true
-            },
-            {
-              "id": "service-requests",
-              "x": 50,
-              "y": 80,
-              "title": "Service Requests",
-              "description": "One-tap requests for housekeeping, maintenance, or amenities. Requests route automatically to the right team.",
-              "aiPowered": false
             }
           ]
         }

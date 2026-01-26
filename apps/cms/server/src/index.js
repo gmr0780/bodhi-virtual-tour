@@ -53,10 +53,12 @@ app.get('/api/health', (req, res) => {
 // Auth routes
 app.get('/api/auth/github', passport.authenticate('github', { scope: ['user:email'] }))
 
+const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:5173'
+
 app.get('/api/auth/github/callback',
-  passport.authenticate('github', { failureRedirect: '/login?error=unauthorized' }),
+  passport.authenticate('github', { failureRedirect: `${CLIENT_URL}?error=unauthorized` }),
   (req, res) => {
-    res.redirect(process.env.CLIENT_URL || 'http://localhost:5173')
+    res.redirect(CLIENT_URL)
   }
 )
 

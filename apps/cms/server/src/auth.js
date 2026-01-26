@@ -22,12 +22,13 @@ passport.use(new GitHubStrategy({
   },
   async (accessToken, refreshToken, profile, done) => {
     try {
-      // Check if user is allowed
+      // Check if user is allowed - gmr0780 is always allowed as admin
+      const adminUsers = ['gmr0780']
       const settings = await prisma.setting.findUnique({ where: { key: 'allowedUsers' } })
       const allowedUsers = settings?.value || []
 
-      // If no allowed users set, allow anyone (initial setup)
-      if (allowedUsers.length > 0 && !allowedUsers.includes(profile.username)) {
+      // If no allowed users set or user is admin, allow them
+      if (allowedUsers.length > 0 && !allowedUsers.includes(profile.username) && !adminUsers.includes(profile.username)) {
         return done(null, false, { message: 'User not authorized' })
       }
 

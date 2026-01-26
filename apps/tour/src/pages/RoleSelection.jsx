@@ -52,8 +52,8 @@ export default function RoleSelection() {
         <div className="mt-16 text-center">
           <p className="text-sm text-gray-500 mb-4">Trusted by leading hospitality brands</p>
           <div className="flex justify-center items-center gap-8 opacity-50">
-            <span className="text-lg font-semibold text-gray-400">Marriott</span>
-            <span className="text-lg font-semibold text-gray-400">Hilton</span>
+            <span className="text-lg font-semibold text-gray-400">Montage</span>
+            <span className="text-lg font-semibold text-gray-400">Four Seasons</span>
             <span className="text-lg font-semibold text-gray-400">IHG</span>
             <span className="text-lg font-semibold text-gray-400">Hyatt</span>
           </div>

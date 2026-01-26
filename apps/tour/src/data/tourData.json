@@ -6,7 +6,6 @@
       "description": "Deliver exceptional guest experiences, eliminate complaints, and strengthen brand reputation",
       "icon": "building",
       "videoUrl": "",
-      "tagline": "Trusted by Montage, Four Seasons, and Marriott",
       "recommendedTopics": [
         "ai",
         "guest",
@@ -21,7 +20,6 @@
       "description": "Reduce reactive calls, automate monitoring, and free your team for high-value work",
       "icon": "wrench",
       "videoUrl": "",
-      "tagline": "Less firefighting, more planned maintenance",
       "recommendedTopics": [
         "ai",
         "operations",
@@ -36,7 +34,6 @@
       "description": "Secure, hardware-agnostic platform with SOC 2 Type II and ISO 27001 certifications",
       "icon": "server",
       "videoUrl": "",
-      "tagline": "No vendor lock-in, minimal network impact",
       "recommendedTopics": [
         "ai",
         "hardware",
@@ -60,24 +57,24 @@
           "hotspots": [
             {
               "id": "ai-assistant",
-              "x": 50,
-              "y": 25,
+              "x": 7.494646680942184,
+              "y": 8.527242445871996,
               "title": "AI-Powered Property Intelligence",
               "description": "Ask Bodhi AI anything about your property - device status, room occupancy, system health, or operational insights. Get instant, accurate answers without digging through multiple dashboards.",
               "aiPowered": true
             },
             {
               "id": "smart-prompts",
-              "x": 30,
-              "y": 55,
+              "x": 43.29764453961456,
+              "y": 52.3816321674994,
               "title": "Smart Operational Prompts",
               "description": "Pre-built prompts help your team get answers faster. From 'What's the average temperature?' to 'Which devices need attention?' - common questions are just one click away.",
               "aiPowered": true
             },
             {
               "id": "natural-language",
-              "x": 70,
-              "y": 55,
+              "x": 77.04496788008566,
+              "y": 26.79990482988341,
               "title": "Natural Language Queries",
               "description": "No technical knowledge required. Ask questions in plain English and Bodhi AI translates them into actionable insights. Your team can self-serve answers without IT involvement.",
               "aiPowered": true
@@ -130,24 +127,24 @@
           "hotspots": [
             {
               "id": "realtime-usage",
-              "x": 23.31197634302612,
-              "y": 31.1921581512513,
+              "x": 23.94004282655246,
+              "y": 31.67261479895313,
               "title": "Centralized Monitoring & AI Insights",
               "description": "Monitor HVAC, lighting, and equipment status in real-time from a single platform. Bodhi's AI detects inefficiencies and recommends actions - reducing the need to check multiple systems manually.",
               "aiPowered": true
             },
             {
               "id": "savings-tracker",
-              "x": 70,
-              "y": 35,
+              "x": 40.04282655246253,
+              "y": 46.29074470616226,
               "title": "Measurable Energy Savings",
               "description": "Track actual savings compared to baseline with clear ROI metrics. Properties typically see 30-45% reduction in energy costs while maintaining - or improving - guest comfort.",
               "aiPowered": false
             },
             {
               "id": "occupancy-automation",
-              "x": 45,
-              "y": 60,
+              "x": 37.13062098501071,
+              "y": 71.26338329764454,
               "title": "AI-Powered Personalization",
               "description": "Bodhi learns guest preferences and occupancy patterns to create tailored experiences. Rooms are automatically optimized before arrival - ideal temperatures, personalized lighting scenes - enhancing comfort while eliminating energy waste.",
               "aiPowered": true
@@ -475,7 +472,7 @@
     }
   ],
   "cta": {
-    "url": "https://www.gobodhi.com/contact",
+    "url": "https://www.gobodhi.com/request-a-demo",
     "text": "Book a Demo"
   }
 }

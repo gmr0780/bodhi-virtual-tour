@@ -55,6 +55,7 @@ export const api = {
   preview: () => fetchAPI('/publish/preview'),
   publish: () => fetchAPI('/publish', { method: 'POST' }),
   getPublishHistory: () => fetchAPI('/publish/history'),
+  importFromGitHub: () => fetchAPI('/publish/import', { method: 'POST' }),
 
   // Upload
   uploadScreenshot: async (file, filename) => {

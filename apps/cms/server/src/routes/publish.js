@@ -135,4 +135,100 @@ router.get('/history', async (req, res) => {
   }
 })
 
+// Import from GitHub JSON
+router.post('/import', async (req, res) => {
+  try {
+    const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN })
+    const [owner, repo] = process.env.GITHUB_REPO.split('/')
+
+    // Fetch the JSON file from GitHub
+    const { data } = await octokit.repos.getContent({
+      owner,
+      repo,
+      path: 'apps/tour/src/data/tourData.json'
+    })
+
+    const content = Buffer.from(data.content, 'base64').toString('utf-8')
+    const tourData = JSON.parse(content)
+
+    // Clear existing data
+    await prisma.hotspot.deleteMany()
+    await prisma.screen.deleteMany()
+    await prisma.topic.deleteMany()
+    await prisma.role.deleteMany()
+
+    // Import roles
+    for (let i = 0; i < tourData.roles.length; i++) {
+      const role = tourData.roles[i]
+      await prisma.role.create({
+        data: {
+          id: role.id,
+          name: role.name,
+          description: role.description || '',
+          icon: role.icon || 'building',
+          videoUrl: role.videoUrl || '',
+          recommendedTopics: role.recommendedTopics || [],
+          order: i
+        }
+      })
+    }
+
+    // Import topics with screens and hotspots
+    for (let i = 0; i < tourData.topics.length; i++) {
+      const topic = tourData.topics[i]
+      await prisma.topic.create({
+        data: {
+          id: topic.id,
+          name: topic.name,
+          description: topic.description || '',
+          icon: topic.icon || 'folder',
+          order: i,
+          screens: {
+            create: (topic.screens || []).map((screen, si) => ({
+              id: screen.id,
+              title: screen.title,
+              imagePath: screen.image || '',
+              order: si,
+              hotspots: {
+                create: (screen.hotspots || []).map((hotspot, hi) => ({
+                  id: hotspot.id,
+                  x: hotspot.x,
+                  y: hotspot.y,
+                  title: hotspot.title,
+                  description: hotspot.description || '',
+                  aiPowered: hotspot.aiPowered || false,
+                  order: hi
+                }))
+              }
+            }))
+          }
+        }
+      })
+    }
+
+    // Import CTA setting if present
+    if (tourData.cta) {
+      await prisma.setting.upsert({
+        where: { key: 'cta' },
+        update: { value: tourData.cta },
+        create: { key: 'cta', value: tourData.cta }
+      })
+    }
+
+    res.json({
+      success: true,
+      imported: {
+        roles: tourData.roles.length,
+        topics: tourData.topics.length,
+        screens: tourData.topics.reduce((acc, t) => acc + (t.screens?.length || 0), 0),
+        hotspots: tourData.topics.reduce((acc, t) =>
+          acc + (t.screens?.reduce((sacc, s) => sacc + (s.hotspots?.length || 0), 0) || 0), 0)
+      }
+    })
+  } catch (err) {
+    console.error('Import error:', err)
+    res.status(500).json({ error: err.message })
+  }
+})
+
 export default router

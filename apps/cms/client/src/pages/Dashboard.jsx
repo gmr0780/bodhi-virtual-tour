@@ -7,6 +7,8 @@ export default function Dashboard() {
   const [publishing, setPublishing] = useState(false)
   const [publishResult, setPublishResult] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [importing, setImporting] = useState(false)
+  const [importResult, setImportResult] = useState(null)
 
   useEffect(() => {
     loadData()
@@ -58,6 +60,23 @@ export default function Dashboard() {
     }
   }
 
+  async function handleImport() {
+    if (!confirm('This will replace all CMS content with data from the GitHub JSON file. Continue?')) {
+      return
+    }
+    setImporting(true)
+    setImportResult(null)
+    try {
+      const result = await api.importFromGitHub()
+      setImportResult({ success: true, ...result })
+      loadData() // Refresh stats
+    } catch (err) {
+      setImportResult({ success: false, error: err.message })
+    } finally {
+      setImporting(false)
+    }
+  }
+
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
@@ -71,6 +90,25 @@ export default function Dashboard() {
       <div className="flex justify-between items-center">
         <h2 className="text-2xl font-bold text-gray-900">Dashboard</h2>
         <div className="flex items-center gap-3">
+          <button
+            onClick={handleImport}
+            disabled={importing}
+            className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+          >
+            {importing ? (
+              <>
+                <div className="animate-spin w-4 h-4 border-2 border-gray-500 border-t-transparent rounded-full" />
+                Importing...
+              </>
+            ) : (
+              <>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                </svg>
+                Sync from GitHub
+              </>
+            )}
+          </button>
           <a
             href={import.meta.env.VITE_TOUR_URL || 'https://bodhi-virtual-tour.vercel.app'}
             target="_blank"
@@ -99,6 +137,18 @@ export default function Dashboard() {
           </button>
         </div>
       </div>
+
+      {importResult && (
+        <div className={`p-4 rounded-lg ${importResult.success ? 'bg-blue-50 text-blue-800' : 'bg-red-50 text-red-800'}`}>
+          {importResult.success ? (
+            <p>
+              Imported successfully! {importResult.imported.roles} roles, {importResult.imported.topics} topics, {importResult.imported.screens} screens, {importResult.imported.hotspots} hotspots
+            </p>
+          ) : (
+            <p>Import failed: {importResult.error}</p>
+          )}
+        </div>
+      )}
 
       {publishResult && (
         <div className={`p-4 rounded-lg ${publishResult.success ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'}`}>

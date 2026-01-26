@@ -2,6 +2,14 @@ import { useState, useEffect, useRef } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { api } from '../lib/api'
 
+const TOUR_URL = import.meta.env.VITE_TOUR_URL || 'https://bodhi-virtual-tour.vercel.app'
+
+function getImageUrl(path) {
+  if (!path) return null
+  if (path.startsWith('http')) return path
+  return `${TOUR_URL}${path}`
+}
+
 function HotspotEditor({ screen, onUpdate }) {
   const containerRef = useRef(null)
   const [hotspots, setHotspots] = useState(screen.hotspots || [])
@@ -91,7 +99,7 @@ function HotspotEditor({ screen, onUpdate }) {
       >
         {screen.imagePath ? (
           <img
-            src={screen.imagePath}
+            src={getImageUrl(screen.imagePath)}
             alt={screen.title}
             className="w-full h-full object-cover pointer-events-none"
           />

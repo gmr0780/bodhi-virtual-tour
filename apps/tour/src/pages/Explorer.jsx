@@ -203,6 +203,8 @@ export default function Explorer() {
             onAllHotspotsViewed={handleAllHotspotsViewed}
             isFirstScreen={currentScreenIndex === 0 && !hasSeenIntro}
             onIntroComplete={() => setHasSeenIntro(true)}
+            hasNextScreen={currentScreenIndex < topic.screens.length - 1}
+            onNextScreen={nextScreen}
           />
         </div>
 

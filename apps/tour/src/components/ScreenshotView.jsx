@@ -2,13 +2,14 @@ import { useState, useEffect } from 'react'
 import Hotspot from './Hotspot'
 import FeaturePanel from './FeaturePanel'
 
-export default function ScreenshotView({ screen, onAllHotspotsViewed, isFirstScreen, onIntroComplete }) {
+export default function ScreenshotView({ screen, onAllHotspotsViewed, isFirstScreen, onIntroComplete, onNextScreen, hasNextScreen }) {
   const [activeHotspot, setActiveHotspot] = useState(null)
   const [viewedHotspots, setViewedHotspots] = useState([])
   const [isGuided, setIsGuided] = useState(false)
   const [guidedIndex, setGuidedIndex] = useState(0)
   const [isVisible, setIsVisible] = useState(false)
   const [showIntro, setShowIntro] = useState(isFirstScreen)
+  const [showCompletion, setShowCompletion] = useState(false)
 
   // Fade in on mount
   useEffect(() => {
@@ -68,7 +69,16 @@ export default function ScreenshotView({ screen, onAllHotspotsViewed, isFirstScr
       setGuidedIndex(nextIndex)
       handleHotspotClick(screen.hotspots[nextIndex], nextIndex)
     } else {
-      exitGuided()
+      // Show completion state instead of abruptly exiting
+      setIsGuided(false)
+      setShowCompletion(true)
+    }
+  }
+
+  const handleContinue = () => {
+    setShowCompletion(false)
+    if (hasNextScreen && onNextScreen) {
+      onNextScreen()
     }
   }
 
@@ -106,6 +116,48 @@ export default function ScreenshotView({ screen, onAllHotspotsViewed, isFirstScr
             className="block mx-auto mt-3 text-sm text-gray-500 hover:text-gray-700"
           >
             Skip intro
+          </button>
+        </div>
+      </div>
+    )
+  }
+
+  // Completion overlay after finishing all hotspots
+  if (showCompletion) {
+    return (
+      <div className="flex items-center justify-center min-h-[400px] animate-fade-in">
+        <div className="text-center max-w-md px-6">
+          <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <h2 className="text-2xl font-bold text-gray-900 mb-3">
+            Screen Complete!
+          </h2>
+          <p className="text-gray-600 mb-6">
+            You've explored all {screen.hotspots.length} features on this screen.
+          </p>
+          {hasNextScreen ? (
+            <button
+              onClick={handleContinue}
+              className="bg-bodhi-blue text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+            >
+              Continue to Next Screen →
+            </button>
+          ) : (
+            <button
+              onClick={() => setShowCompletion(false)}
+              className="bg-bodhi-blue text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+            >
+              Finish Topic
+            </button>
+          )}
+          <button
+            onClick={() => setShowCompletion(false)}
+            className="block mx-auto mt-3 text-sm text-gray-500 hover:text-gray-700"
+          >
+            Review this screen
           </button>
         </div>
       </div>

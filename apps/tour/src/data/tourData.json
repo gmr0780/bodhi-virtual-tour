@@ -8,6 +8,7 @@
       "videoUrl": "",
       "tagline": "Trusted by Montage, Four Seasons, and Marriott",
       "recommendedTopics": [
+        "ai",
         "guest",
         "energy",
         "operations",
@@ -22,6 +23,7 @@
       "videoUrl": "",
       "tagline": "Less firefighting, more planned maintenance",
       "recommendedTopics": [
+        "ai",
         "operations",
         "hardware",
         "energy",
@@ -36,6 +38,7 @@
       "videoUrl": "",
       "tagline": "No vendor lock-in, minimal network impact",
       "recommendedTopics": [
+        "ai",
         "hardware",
         "operations",
         "energy",
@@ -44,6 +47,76 @@
     }
   ],
   "topics": [
+    {
+      "id": "ai",
+      "name": "Bodhi AI & Automation",
+      "description": "AI-powered insights that transform how you manage your property",
+      "icon": "sparkles",
+      "screens": [
+        {
+          "id": "bodhi-ai-dashboard",
+          "title": "Bodhi AI Assistant",
+          "image": "/screenshots/bodhi-gpt-dashboard.png",
+          "hotspots": [
+            {
+              "id": "ai-assistant",
+              "x": 50,
+              "y": 25,
+              "title": "AI-Powered Property Intelligence",
+              "description": "Ask Bodhi AI anything about your property - device status, room occupancy, system health, or operational insights. Get instant, accurate answers without digging through multiple dashboards.",
+              "aiPowered": true
+            },
+            {
+              "id": "smart-prompts",
+              "x": 30,
+              "y": 55,
+              "title": "Smart Operational Prompts",
+              "description": "Pre-built prompts help your team get answers faster. From 'What's the average temperature?' to 'Which devices need attention?' - common questions are just one click away.",
+              "aiPowered": true
+            },
+            {
+              "id": "natural-language",
+              "x": 70,
+              "y": 55,
+              "title": "Natural Language Queries",
+              "description": "No technical knowledge required. Ask questions in plain English and Bodhi AI translates them into actionable insights. Your team can self-serve answers without IT involvement.",
+              "aiPowered": true
+            }
+          ]
+        },
+        {
+          "id": "bodhi-ai-response",
+          "title": "AI Issue Detection",
+          "image": "/screenshots/bodhi-ai-issues.png",
+          "hotspots": [
+            {
+              "id": "issue-summary",
+              "x": 30,
+              "y": 30,
+              "title": "Instant Issue Summarization",
+              "description": "Bodhi AI analyzes all device issues across your property and presents them organized by severity - Critical, High, Medium, Low. Your team knows exactly what needs attention first.",
+              "aiPowered": true
+            },
+            {
+              "id": "prioritized-alerts",
+              "x": 30,
+              "y": 55,
+              "title": "Prioritized Action Items",
+              "description": "No more sifting through alerts. Bodhi AI groups issues by type and urgency - temperature runaways, offline sensors, connectivity problems - so your team can tackle the most important issues first.",
+              "aiPowered": true
+            },
+            {
+              "id": "proactive-insights",
+              "x": 70,
+              "y": 45,
+              "title": "Proactive Problem Detection",
+              "description": "Bodhi AI doesn't wait for you to ask. It continuously monitors your property and surfaces issues before they impact guests. This is predictive maintenance in action.",
+              "aiPowered": true
+            }
+          ]
+        }
+      ]
+    },
     {
       "id": "energy",
       "name": "Energy & Cost Savings",

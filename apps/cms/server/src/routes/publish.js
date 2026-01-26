@@ -151,11 +151,13 @@ router.post('/import', async (req, res) => {
     const content = Buffer.from(data.content, 'base64').toString('utf-8')
     const tourData = JSON.parse(content)
 
-    // Clear existing data
-    await prisma.hotspot.deleteMany()
-    await prisma.screen.deleteMany()
-    await prisma.topic.deleteMany()
-    await prisma.role.deleteMany()
+    // Clear existing data in a transaction
+    await prisma.$transaction([
+      prisma.hotspot.deleteMany(),
+      prisma.screen.deleteMany(),
+      prisma.topic.deleteMany(),
+      prisma.role.deleteMany()
+    ])
 
     // Import roles
     for (let i = 0; i < tourData.roles.length; i++) {

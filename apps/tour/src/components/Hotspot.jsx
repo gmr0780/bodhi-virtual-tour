@@ -3,7 +3,9 @@ import { SparklesIcon } from './icons'
 export default function Hotspot({ hotspot, index, isActive, onClick, isGuided, isGuidedActive }) {
   return (
     <button
+      type="button"
       onClick={onClick}
+      aria-label={`Feature ${index + 1}: ${hotspot.title || 'Interactive hotspot'}`}
       style={{ left: `${hotspot.x}%`, top: `${hotspot.y}%` }}
       className={`absolute transform -translate-x-1/2 -translate-y-1/2 transition-all duration-200 ${
         isGuided && !isGuidedActive ? 'opacity-30' : ''

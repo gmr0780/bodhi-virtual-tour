@@ -5,8 +5,11 @@ export default function ScreenThumbnails({ screens, currentIndex, viewedScreens,
     <div className="flex items-center gap-2 overflow-x-auto pb-2">
       {screens.map((screen, index) => (
         <button
+          type="button"
           key={screen.id}
           onClick={() => onSelect(index)}
+          aria-label={`Go to screen ${index + 1}: ${screen.title}`}
+          aria-current={index === currentIndex ? 'true' : undefined}
           className={`relative flex-shrink-0 w-20 h-14 rounded-lg overflow-hidden border-2 transition-all ${
             index === currentIndex
               ? 'border-bodhi-blue'

@@ -106,12 +106,14 @@ export default function ScreenshotView({ screen, onAllHotspotsViewed, isFirstScr
             We'll guide you through each one.
           </p>
           <button
+            type="button"
             onClick={handleStartExploring}
             className="bg-bodhi-blue text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
           >
             Start Exploring
           </button>
           <button
+            type="button"
             onClick={handleSkipIntro}
             className="block mx-auto mt-3 text-sm text-gray-500 hover:text-gray-700"
           >
@@ -140,6 +142,7 @@ export default function ScreenshotView({ screen, onAllHotspotsViewed, isFirstScr
           </p>
           {hasNextScreen ? (
             <button
+              type="button"
               onClick={handleContinue}
               className="bg-bodhi-blue text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
             >
@@ -147,6 +150,7 @@ export default function ScreenshotView({ screen, onAllHotspotsViewed, isFirstScr
             </button>
           ) : (
             <button
+              type="button"
               onClick={() => setShowCompletion(false)}
               className="bg-bodhi-blue text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
             >
@@ -154,6 +158,7 @@ export default function ScreenshotView({ screen, onAllHotspotsViewed, isFirstScr
             </button>
           )}
           <button
+            type="button"
             onClick={() => setShowCompletion(false)}
             className="block mx-auto mt-3 text-sm text-gray-500 hover:text-gray-700"
           >
@@ -168,12 +173,12 @@ export default function ScreenshotView({ screen, onAllHotspotsViewed, isFirstScr
     <div className={`flex flex-col lg:flex-row gap-6 h-full transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
       {/* Screenshot area */}
       <div className="flex-1 lg:w-3/5">
-        <div className="relative aspect-[16/10] bg-gray-100 rounded-xl overflow-hidden shadow-lg">
+        <div className="relative aspect-[16/10] max-h-[60vh] bg-gray-100 rounded-xl overflow-hidden shadow-lg">
           {screen.image ? (
             <img
               src={screen.image}
               alt={screen.title}
-              className="w-full h-full object-cover transition-transform duration-700"
+              className="w-full h-full object-contain transition-transform duration-700"
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
@@ -205,6 +210,7 @@ export default function ScreenshotView({ screen, onAllHotspotsViewed, isFirstScr
               {viewedHotspots.length} of {screen.hotspots.length} features explored
             </p>
             <button
+              type="button"
               onClick={startGuided}
               className="text-bodhi-blue hover:underline text-sm font-medium"
             >

@@ -64,6 +64,7 @@ export default function FeaturePanel({
               Step {guidedIndex + 1} of {totalHotspots}
             </span>
             <button
+              type="button"
               onClick={onExitGuided}
               className="text-sm text-gray-400 hover:text-gray-600"
             >
@@ -73,15 +74,19 @@ export default function FeaturePanel({
 
           <div className="flex gap-2">
             <button
+              type="button"
               onClick={onPrev}
               disabled={guidedIndex === 0}
+              aria-label="Previous feature"
               className="flex-1 flex items-center justify-center gap-2 px-4 py-2 border border-gray-200 rounded-lg text-gray-600 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <ChevronLeftIcon className="w-4 h-4" />
               Back
             </button>
             <button
+              type="button"
               onClick={onNext}
+              aria-label={guidedIndex === totalHotspots - 1 ? 'Finish guide' : 'Next feature'}
               className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-bodhi-blue text-white rounded-lg hover:bg-blue-700"
             >
               {guidedIndex === totalHotspots - 1 ? 'Finish' : 'Next'}

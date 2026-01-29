@@ -5,6 +5,7 @@ export default function TopicCard({ topic, isRecommended, isCompleted, onClick }
 
   return (
     <button
+      type="button"
       onClick={onClick}
       className={`group relative bg-white rounded-2xl p-6 text-left shadow-sm border transition-all duration-200 ${
         isCompleted

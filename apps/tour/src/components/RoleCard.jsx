@@ -5,6 +5,7 @@ export default function RoleCard({ role, onClick }) {
 
   return (
     <button
+      type="button"
       onClick={onClick}
       className="group relative bg-white rounded-2xl p-8 text-left shadow-sm border border-gray-100 hover:shadow-xl hover:border-bodhi-blue/30 transition-all duration-300 overflow-hidden"
     >

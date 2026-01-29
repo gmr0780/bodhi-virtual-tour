@@ -180,14 +180,18 @@ export default function Explorer() {
 
           <div className="flex items-center gap-2">
             <button
+              type="button"
               onClick={prevScreen}
               disabled={currentScreenIndex === 0}
+              aria-label="Previous screen"
               className="p-2 border border-gray-200 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <ChevronLeftIcon className="w-5 h-5" />
             </button>
             <button
+              type="button"
               onClick={nextScreen}
+              aria-label="Next screen"
               className="p-2 border border-gray-200 rounded-lg hover:bg-gray-50"
             >
               <ChevronRightIcon className="w-5 h-5" />

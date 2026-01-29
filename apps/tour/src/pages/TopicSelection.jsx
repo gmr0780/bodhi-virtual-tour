@@ -39,6 +39,11 @@ export default function TopicSelection() {
     navigate(`/explore/${roleId}/${topicId}`)
   }
 
+  const handleResetProgress = () => {
+    localStorage.removeItem('bodhi-tour-completed')
+    setCompletedTopics([])
+  }
+
   // Sort topics by recommended order for this role
   const sortedTopics = [...tourData.topics].sort((a, b) => {
     const aIndex = role.recommendedTopics.indexOf(a.id)
@@ -50,12 +55,23 @@ export default function TopicSelection() {
     <Layout completedTopics={completedTopics}>
       <div className="max-w-4xl mx-auto px-4 py-16">
         <div className="text-center mb-12">
-          <p className="text-bodhi-blue font-medium mb-2">
-            {completedTopics.length > 0
-              ? `${completedTopics.length} of ${tourData.topics.length} topics explored`
-              : 'Choose a topic to explore'
-            }
-          </p>
+          <div className="flex items-center justify-center gap-3 mb-2">
+            <p className="text-bodhi-blue font-medium">
+              {completedTopics.length > 0
+                ? `${completedTopics.length} of ${tourData.topics.length} topics explored`
+                : 'Choose a topic to explore'
+              }
+            </p>
+            {completedTopics.length > 0 && (
+              <button
+                type="button"
+                onClick={handleResetProgress}
+                className="text-sm text-gray-400 hover:text-gray-600 underline"
+              >
+                Reset
+              </button>
+            )}
+          </div>
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
             What would you like to explore?
           </h1>
